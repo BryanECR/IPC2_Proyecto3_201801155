@@ -1,8 +1,8 @@
 class Nodo:
-    def __init__(self,fecha,usuario,afectado,codigo,error):
+    def __init__(self,fecha,usuario,afectado,codigo,DescripcionError):
         self.fecha = fecha,
         self.usuario = usuario,
         self.afectado = afectado,
         self.codigo = codigo,
-        self.error = error,
+        self.DescripcionError = DescripcionError,
         self.siguiente = None
