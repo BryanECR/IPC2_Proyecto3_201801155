@@ -6,24 +6,18 @@ listadatos = ListaEnlazada()
 app = Flask(__name__)
 
 
-@app.route('/ping',methods=['GET'])
-def ping():
-    print("consulta realizada con exito")
-    return jsonify({"message":"Una cadena que pueda leer el programa"})
-
 #OBTIENE LA INFORMACION ANTERIORMENTE INGRESADA
 @app.route('/getInformacion',methods=['GET'])
 def getInformacion():
     data = listadatos.retornarInfomacion()
 
-    salida = '<?xml version="1.0" encoding="UTF-8"?>\n<ESTADISTICAS>\t\n<CANTIDAD_MENSAJES>'+str(len(data))+'</CANTIDAD_MENSAJES>\t\n</ESTADISTICA>'
+    salida = '<?xml version="1.0" encoding="UTF-8"?>\r\n<ESTADISTICAS>\t\n<CANTIDAD_MENSAJES>'+str(len(data))+'</CANTIDAD_MENSAJES>\t\n</ESTADISTICA>'
     for i in range(len(data)):
         salida += '\t\t<FECHA>'+str(data[i]['fecha'])+'</FECHA>\n\t\t<USUARIO>'+str(data[i]['fecha'])+'</USUARIO>\t\t<CODIGO>'+str(data[i]['fecha'])+'</CODIGO>\t\t<AFECTADOS>'+str(data[i]['fecha'])+'</AFECTADOS>\t\t<ERROR>'+str(data[i]['fecha'])+'</ERROR>\n'
 
     salida += '\t</ESTADISTICA>\n</ESTADISTICAS>'
 
-
-    return jsonify(salida)
+    return jsonify(salida) 
 
 #POR MEDIO DE PARAMETROS ESPECIFICOS BUSCA LA INFORMACION EN LA LISTA
 @app.route('/search/<string:dato1>/<string:dato2>',methods=['GET'])
