@@ -5,6 +5,9 @@ from Lista.Lista import ListaEnlazada
 listadatos = ListaEnlazada()
 app = Flask(__name__)
 
+@app.route('/ping')
+def ping():
+    return jsonify({"mensage":"Exito"})
 
 #OBTIENE LA INFORMACION ANTERIORMENTE INGRESADA
 @app.route('/getInformacion',methods=['GET'])
